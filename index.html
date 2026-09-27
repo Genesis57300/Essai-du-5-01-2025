@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+  <meta name="theme-color" content="#10191c" />
+  <title>Rombas 3D — Vallée de l'Orne</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"}}</script>
+</head>
+<body>
+  <div id="app">
+    <canvas id="scene"></canvas>
+    <div class="vignette"></div>
+
+    <header class="topbar glass">
+      <div>
+        <div class="eyebrow">MOSELLE · VALLÉE DE L'ORNE</div>
+        <h1>Rombas <span>3D</span></h1>
+      </div>
+      <div class="status"><i id="statusDot"></i><span id="statusText">Chargement des données géographiques…</span></div>
+    </header>
+
+    <nav class="views glass" aria-label="Vues caméra">
+      <button data-view="overview">Vue générale</button>
+      <button data-view="center">Centre-ville</button>
+      <button data-view="valley">Vallée de l'Orne</button>
+      <button data-view="fond">Fond Saint-Martin</button>
+      <button data-view="drince">Tour de Drince</button>
+      <button data-view="station">Gare</button>
+      <button data-view="industrial">Zone industrielle</button>
+    </nav>
+
+    <aside class="legend glass">
+      <div class="legend-title">Lecture du territoire</div>
+      <div><span class="swatch terrain"></span>Relief</div>
+      <div><span class="swatch forest"></span>Boisements</div>
+      <div><span class="swatch water"></span>Orne & plans d'eau</div>
+      <div><span class="swatch roads"></span>Voirie</div>
+      <div><span class="swatch rail"></span>Rail</div>
+      <div><span class="swatch industrial"></span>Zones industrielles</div>
+    </aside>
+
+    <section class="time glass">
+      <div class="time-head"><span>Heure</span><strong id="timeLabel">16:30</strong></div>
+      <input id="timeSlider" type="range" min="0" max="24" step="0.1" value="16.5" />
+      <div class="time-marks"><span>00h</span><span>06h</span><span>12h</span><span>18h</span><span>24h</span></div>
+    </section>
+
+    <section id="info" class="info glass hidden">
+      <button id="closeInfo" aria-label="Fermer">×</button>
+      <div class="eyebrow" id="infoType">LIEU</div>
+      <h2 id="infoTitle">—</h2>
+      <div id="infoDetails"></div>
+    </section>
+
+    <section id="loading" class="loading">
+      <div class="loader-ring"></div>
+      <div class="loading-title">Rombas se met en volume</div>
+      <div id="loadingStep">Préparation du relief…</div>
+      <div class="loading-bar"><span id="loadingBar"></span></div>
+    </section>
+
+    <div class="credits">Données cartographiques <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors · ODbL</a> · Relief SRTM 30 m / OpenTopoData · cache navigateur</div>
+  </div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
